@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import useGames from '../hooks/useGames';
 import apiClient from '../services/api-client';
 import GameCard from './GameCard';
+import GameCardContainer from './GameCardContainer';
 import GameCardSkeleton from './GameCardSkeleton';
 
 
@@ -15,8 +16,10 @@ const GameGrid = () => {
         <>
             {error && <p>Error occured</p>}
             <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 5 }} spacing={10} padding={10}>
-                {isLoading && skeletons.map(skeleton => <GameCardSkeleton key={skeleton} />)}
-                {!isLoading && games.map(game => <GameCard game={game} />)}
+                {isLoading && skeletons.map(skeleton => <GameCardContainer><GameCardSkeleton key={skeleton} /></GameCardContainer>)}
+                {!isLoading && games.map(game =>
+                    <GameCardContainer><GameCard game={game} /></GameCardContainer>
+                )}
             </SimpleGrid>
         </>
 
