@@ -14,11 +14,14 @@ export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string,
-  searchText: string
+  searchText: string,
+  pageSize: number,
 }
 
+const pageSize = 15
+
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
+  const [gameQuery, setGameQuery] = useState<GameQuery>({pageSize} as GameQuery)
   return (
     <Grid templateAreas={{
       base: `"nav" "main"`,
