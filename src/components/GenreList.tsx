@@ -1,15 +1,12 @@
 import { Button, Heading, HStack, Image, List, ListItem, Spinner, Text } from '@chakra-ui/react'
 import { Fragment } from 'react'
+import useGameStore from '../games/store'
 import useGenres, { Genre } from '../hooks/useGenres'
 
-interface Props {
-    onSelectGenre: (genreId: number) => void,
-    selectedGenreId?: number
-}
-
-const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
+const GenreList = () => {
     const { data, isLoading, error } = useGenres()
-
+    const selectedGenreId = useGameStore(s => s.gameQuery.genreId)
+    const setSelectedGenreId = useGameStore(s => s.setGenreId)
     if (error) return null
     if (isLoading) return <Spinner />
     return (
@@ -19,7 +16,7 @@ const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
                 {data?.results?.map(genre => <ListItem padding={'5px'}>
                     <HStack>
                         <Image objectFit={'cover'} boxSize={'32px'} borderRadius={8} src={genre.image_background} />
-                        <Button textAlign={'left'} whiteSpace={'normal'} fontWeight={selectedGenreId === genre.id ? "bold" : "normal"} onClick={() => onSelectGenre(genre.id)} fontSize={'lg'} variant="link">{genre.name}</Button>
+                        <Button textAlign={'left'} whiteSpace={'normal'} fontWeight={selectedGenreId === genre.id ? "bold" : "normal"} onClick={() => setSelectedGenreId(genre.id)} fontSize={'lg'} variant="link">{genre.name}</Button>
                     </HStack>
                 </ListItem>)}
             </List>
