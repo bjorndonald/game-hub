@@ -3,7 +3,8 @@ import { BsChevronDown } from 'react-icons/bs'
 import useGameStore from '../games/store'
 import usePlatform from '../hooks/usePlatform'
 
-import usePlatforms, { Platform } from '../hooks/usePlatforms'
+import usePlatforms from '../hooks/usePlatforms'
+import { Platform } from "../entities/Platform"
 
 const PlatformSelector = () => {
     const { data, isLoading, error } = usePlatforms()

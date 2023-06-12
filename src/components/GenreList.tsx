@@ -1,7 +1,8 @@
 import { Button, Heading, HStack, Image, List, ListItem, Spinner, Text } from '@chakra-ui/react'
 import { Fragment } from 'react'
 import useGameStore from '../games/store'
-import useGenres, { Genre } from '../hooks/useGenres'
+import useGenres from '../hooks/useGenres'
+import { Genre } from "../entities/Genre"
 
 const GenreList = () => {
     const { data, isLoading, error } = useGenres()

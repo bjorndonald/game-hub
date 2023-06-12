@@ -3,17 +3,8 @@ import ms from 'ms';
 import useGameStore from '../games/store';
 
 import APIClient, { FetchResponse } from '../services/api-client';
+import { Game } from '../entities/Game';
 
-import { Platform } from './usePlatforms';
-
-export interface Game {
-  id: number,
-  name: string,
-  background_image: string,
-  parent_platforms: { platform: Platform }[],
-  metacritic: number,
-  rating_top: number,
-}
 
 const apiClient = new APIClient<Game>('/games')
 
