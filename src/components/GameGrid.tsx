@@ -1,11 +1,7 @@
-import { Box, Button, SimpleGrid, Spinner } from '@chakra-ui/react';
-import React, { Fragment, useEffect, useState } from 'react'
+import { SimpleGrid, Spinner } from '@chakra-ui/react';
+import { Fragment } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import useGameStore from '../games/store';
 import useGames from '../hooks/useGames';
-import { Genre } from '../hooks/useGenres';
-import { Platform } from '../hooks/usePlatforms';
-import apiClient from '../services/api-client';
 import GameCard from './GameCard';
 import GameCardContainer from './GameCardContainer';
 import GameCardSkeleton from './GameCardSkeleton';
@@ -35,8 +31,6 @@ const GameGrid = () => {
                         )}
                 </SimpleGrid>
             </InfiniteScroll>
-
-
         </>
     )
 }
